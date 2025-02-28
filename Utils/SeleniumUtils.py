@@ -6,7 +6,6 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.remote.webelement import WebElement
 
-
 from Utils.Logger import printer
 
 
@@ -47,6 +46,13 @@ class SeleniumUtils:
         else:
             printer("error", f"❌ Error: The provided element is not a valid WebElement!")
             raise TypeError("The element is not a WebElement!")
+
+    def getTitle(self):
+        return self.driver.title
+
+    def select(self, element, choice):
+        if isinstance(element, WebElement):
+            element.sel
 
     def enterText(self, dictSend, value):
         if not isinstance(dictSend, dict):

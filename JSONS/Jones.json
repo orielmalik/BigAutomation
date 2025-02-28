@@ -1,0 +1,20 @@
+[
+    {
+        "Name": "gaya",
+        "Email": "j@gmail.com",
+        "Phone": "058731111",
+        "Company": "bb"
+    },
+    {
+        "Name*:": "lior",
+        "Email*:": "lior@gmail.com",
+        "Phone*:": "0501234567",
+        "Company*:": "xyz"
+    },
+    {
+        "Name*:": "maayan",
+        "Email*:": "maayan@gmail.com",
+        "Phone*:": "--0529876543",
+        "Company*:": "abc"
+    }
+]
