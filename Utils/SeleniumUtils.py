@@ -10,7 +10,7 @@ from selenium.webdriver.remote.webelement import WebElement
 from Utils.Logger import printer
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from Utils.CONSTANS import *
 class SeleniumUtils:
     def __init__(self, browser='edge'):
         """
@@ -154,18 +154,8 @@ class SeleniumUtils:
         :return: The corresponding By value.
         :raises ValueError: If the locator type is invalid.
         """
-        mapping = {
-            "ID": By.ID,
-            "XPATH": By.XPATH,
-            "LINK_TEXT": By.LINK_TEXT,
-            "PARTIAL_LINK_TEXT": By.PARTIAL_LINK_TEXT,
-            "NAME": By.NAME,
-            "TAG_NAME": By.TAG_NAME,
-            "CLASS_NAME": By.CLASS_NAME,
-            "CSS_SELECTOR": By.CSS_SELECTOR,
-        }
         try:
-            return mapping[locator_type.upper()]
+            return bySelenium[locator_type.upper()]
         except KeyError:
             printer("error", f"❌ Invalid locator type: {locator_type}")
             raise ValueError(f"Invalid locator type: {locator_type}")
