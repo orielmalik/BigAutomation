@@ -57,9 +57,9 @@ class PandasHelper:
         env = {f't{i + 1}': df for i, df in enumerate(data_frames)}
         return sql(query, env=env)  #init object and do query
 
-    def create_histogram(data,title,xlabel,ylabel, color="skyblue"):
+    def create_histogram(data , title,xlabel,ylabel, color="skyblue"):
         try:
-            plt.hist( data , bins=10, color=color, edgecolor='black')
+            plt.hist(data , bins=10, color=color, edgecolor='black')
             plt.title(title)
             plt.xlabel(xlabel)
             plt.ylabel(ylabel)
