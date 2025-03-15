@@ -3,6 +3,8 @@
 import pandas as pd
 import chardet
 from pandasql import PandaSQL
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
 from Utils.ValidationUtils import *
@@ -57,12 +59,37 @@ class PandasHelper:
         env = {f't{i + 1}': df for i, df in enumerate(data_frames)}
         return sql(query, env=env)  #init object and do query
 
-    def create_histogram(data , title,xlabel,ylabel, color="skyblue"):
+    def create_chart(self,data, chart_type, title,dictt=None, labels=None, color="skyblue"):
+        global xlabel
+        global ylabel
+        if dictt is not None and isinstance(dictt, list):
+            xlabel=dictt[0]
+            ylabel=dictt[1]
         try:
-            plt.hist(data , bins=10, color=color, edgecolor='black')
+            plt.figure(figsize=(8, 6))  # גודל הגרף
+
+            if chart_type == "histogram":
+                plt.hist(data, bins=10, color=color, edgecolor='black')
+                plt.xlabel(xlabel)
+                plt.ylabel(ylabel)
+
+            elif chart_type == "pie":
+                if isinstance(data, dict):  # בדיקה אם הנתונים בפורמט מילון
+                    labels = list(data.keys())
+                    sizes = list(data.values())
+                else:
+                    labels = data.index if hasattr(data, 'index') else range(len(data))
+                    sizes = data.values if hasattr(data, 'values') else data
+
+                plt.pie(sizes, labels=labels, autopct='%1.1f%%', colors=plt.cm.Paired.colors)
+
+            elif chart_type == "plot":
+                plt.plot(data, color=color, marker='o', linestyle='-')
+                plt.xlabel(xlabel)
+                plt.ylabel(ylabel)
+
             plt.title(title)
-            plt.xlabel(xlabel)
-            plt.ylabel(ylabel)
-            plt.show()
+            plt.savefig("g.png")
+
         except Exception as e:
-            print(f"Error creating histogram: {e}")
+            print(f"Error creating {chart_type}: {e}")

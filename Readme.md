@@ -14,6 +14,22 @@ This project provides an abstraction layer over **Playwright** and **Selenium** 
 - **Pandas🐼** – For data processing and analysis  
 - **Gherkin📜** – For behavior-driven testing  
 
+
+
+
+
+
+| Name               | Description                                              |
+|--------------------|----------------------------------------------------------|
+| __init__          | Initializes the PandasHelper class with a file path, data, or DataFrame. |
+| detect_encoding   | Detects and returns the encoding of a file.              |
+| read_file         | Reads a file (CSV, XLSX, JSON) into a DataFrame.         |
+| create_dataframe  | Creates a DataFrame from provided data and columns.      |
+| create_series     | Creates a Pandas Series from provided data.              |
+| sqlSelect         | Executes an SQL query on a DataFrame using PandaSQL.     |
+| create_chart      | Creates and saves a chart (histogram, pie, or plot) based on data. |
+
+
 ## Getting Started  
 To install dependencies and set up the project, run:  
 ```bash
