@@ -17,6 +17,14 @@ def merge_files(*file_paths):
     return merged_df
 
 
+def select_columns(df: pd.DataFrame, columns: list) -> pd.DataFrame:
+    valid_columns = [col for col in columns if col in df.columns]
+    if not valid_columns:
+        raise ValueError("no cols")
+
+    return df[valid_columns]
+
+
 class PandasHelper:
     def __init__(self, file_path=None, data=None, columns=None):
         self.file_path = file_path
